@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import appHomeActions from '../actions/appHomeActions'
 import appHomeStore from '../stores/appHomeStore'
 import Dimensions from 'Dimensions'
 
 // 屏幕宽度
-var { width, height } = Dimensions.get('window')
+var { width } = Dimensions.get('window')
 
 import {
   StyleSheet,
@@ -18,6 +18,7 @@ var AppButton = React.createClass({
       color: 'red'
     }
   },
+
   componentDidMount: function () {
     appHomeStore.addChangeListener(this._handleUpdate)
   },
@@ -26,12 +27,16 @@ var AppButton = React.createClass({
   },
   render: function () {
     return (
-      <TouchableHighlight onPress={this._handlePress.bind(this, null)} style={[styles.mubutton, {backgroundColor: this.state.color}]}>
+      <TouchableHighlight id='appBT' onPress={this._handlePress.bind(this, null)} style={[styles.mubutton, {backgroundColor: this.state.color}]}>
         <Text>Press Me To Change Color!</Text>
       </TouchableHighlight>
     )
   },
   _handlePress () {
+    if (this.props.onAction) {
+      console.log('\nonAction')
+      this.props.onAction()
+    }
     console.log('Pressed!')
     appHomeActions.pressClickButton()
   },
@@ -52,5 +57,9 @@ var styles = StyleSheet.create({
     height: 30
   }
 })
+
+AppButton.propTypes = {
+  onAction: PropTypes.func
+}
 
 module.exports = AppButton

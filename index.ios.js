@@ -10,7 +10,6 @@ import AppButton from './iOS_app/components/AppButton'
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View
 } from 'react-native'
 

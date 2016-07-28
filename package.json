@@ -2,16 +2,52 @@
   "name": "HiLive",
   "version": "0.0.1",
   "private": true,
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "./node_modules"
+    ],
+    "verbose": true,
+    "collectCoverage": true
+  },
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
     "es6-promise": "^3.2.1",
     "events": "^1.0.2",
     "flux": "^2.1.1",
     "flux-dispatcher": "^1.1.3",
+    "jest-cli": "^14.0.0",
     "object-assign": "^1.0.0",
     "react": "15.2.1",
+    "react-addons-test-utils": "^15.2.1",
     "react-native": "0.30.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^14.0.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-react-native": "^1.9.0",
+    "enzyme": "^2.4.1",
+    "react-dom": "^15.2.1",
+    "chai": "^3.5.0",
+    "react-native-mock": "^0.2.5",
+    "sinon": "^1.17.5"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "beforeEach",
+      "afterEach",
+      "WebSocket",
+      "shallow",
+      "mount",
+      "expect",
+      "spy",
+      "before",
+      "after"
+    ]
   }
 }
